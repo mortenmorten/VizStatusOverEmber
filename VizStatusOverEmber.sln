@@ -11,11 +11,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmberLib.Glow", "..\ember-p
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmberLib.Framing", "..\ember-plus\EmberLib.net\EmberLib.Framing\EmberLib.Framing.csproj", "{E4FD153D-6FF9-4AB4-927B-902E585BDE33}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VizStatusOverEmberLib", "StatusOverEmberLib\VizStatusOverEmberLib.csproj", "{2B6CB0E8-8A8C-4A5F-8DB7-C36FD94A26C0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VizStatusOverEmberLib", "VizStatusOverEmberLib\VizStatusOverEmberLib.csproj", "{2B6CB0E8-8A8C-4A5F-8DB7-C36FD94A26C0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VizStatusOverEmberConsole", "StatusOverEmberConsole\VizStatusOverEmberConsole.csproj", "{DFC59FBC-BE16-4D0D-B69D-27A4A53CB80E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VizStatusOverEmberConsole", "VizStatusOverEmberConsole\VizStatusOverEmberConsole.csproj", "{DFC59FBC-BE16-4D0D-B69D-27A4A53CB80E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VizStatusOverEmberService", "StatusOverEmberService\VizStatusOverEmberService.csproj", "{FF3B0069-15EA-4EAE-B4EB-7FFD6FB19193}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VizStatusOverEmberService", "VizStatusOverEmberService\VizStatusOverEmberService.csproj", "{FF3B0069-15EA-4EAE-B4EB-7FFD6FB19193}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

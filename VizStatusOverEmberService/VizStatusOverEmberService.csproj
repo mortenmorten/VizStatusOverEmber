@@ -64,7 +64,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\StatusOverEmberLib\VizStatusOverEmberLib.csproj">
+    <ProjectReference Include="..\VizStatusOverEmberLib\VizStatusOverEmberLib.csproj">
       <Project>{2b6cb0e8-8a8c-4a5f-8db7-c36fd94a26c0}</Project>
       <Name>VizStatusOverEmberLib</Name>
     </ProjectReference>

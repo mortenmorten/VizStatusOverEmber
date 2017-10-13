@@ -61,7 +61,7 @@
       <Project>{535d5b87-6db7-41eb-a4ec-37a56c6352fb}</Project>
       <Name>EmberLib</Name>
     </ProjectReference>
-    <ProjectReference Include="..\StatusOverEmberLib\VizStatusOverEmberLib.csproj">
+    <ProjectReference Include="..\VizStatusOverEmberLib\VizStatusOverEmberLib.csproj">
       <Project>{2b6cb0e8-8a8c-4a5f-8db7-c36fd94a26c0}</Project>
       <Name>VizStatusOverEmberLib</Name>
     </ProjectReference>
