@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DFC59FBC-BE16-4D0D-B69D-27A4A53CB80E}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>VizStatusOverEmberConsole</RootNamespace>
+    <AssemblyName>VizStatusOverEmberConsole</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\ember-plus\EmberLib.net\EmberLib.Framing\EmberLib.Framing.csproj">
+      <Project>{e4fd153d-6ff9-4ab4-927b-902e585bde33}</Project>
+      <Name>EmberLib.Framing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ember-plus\EmberLib.net\EmberLib.Glow\EmberLib.Glow.csproj">
+      <Project>{71ef1e5c-4ca1-4c44-a091-0ca9f7609dac}</Project>
+      <Name>EmberLib.Glow</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\ember-plus\EmberLib.net\EmberLib\EmberLib.csproj">
+      <Project>{535d5b87-6db7-41eb-a4ec-37a56c6352fb}</Project>
+      <Name>EmberLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\StatusOverEmberLib\VizStatusOverEmberLib.csproj">
+      <Project>{2b6cb0e8-8a8c-4a5f-8db7-c36fd94a26c0}</Project>
+      <Name>VizStatusOverEmberLib</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
