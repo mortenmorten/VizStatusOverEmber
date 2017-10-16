@@ -47,6 +47,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Arguments.cs" />
+    <Compile Include="Command.cs" />
+    <Compile Include="CommandException.cs" />
+    <Compile Include="CommandReceivedArgs.cs" />
     <Compile Include="EmberTree.cs" />
     <Compile Include="Ember\BooleanParameter.cs" />
     <Compile Include="Ember\Dispatcher.cs" />
@@ -68,6 +71,7 @@
     <Compile Include="Ember\Client.cs" />
     <Compile Include="Ember\GlowListener.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TextCommandReader.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\ember-plus\EmberLib.net\BerLib\BerLib.csproj">
@@ -89,7 +93,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <None Include="VizStatusOverEmberLib.ruleset" />
   </ItemGroup>
   <ItemGroup>
     <Analyzer Include="..\packages\StyleCop.Analyzers.1.0.2\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />

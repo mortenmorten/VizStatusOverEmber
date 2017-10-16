@@ -9,12 +9,15 @@
     public class TextCommandClient : IDisposable
     {
         private readonly object _sync = new object();
+        private readonly TextCommandReader _commandReader = new TextCommandReader();
 
         public TextCommandClient(TextCommandListener host, Socket socket, Dispatcher dispatcher)
         {
             Host = host;
             Socket = socket;
             Dispatcher = dispatcher;
+
+            _commandReader.CommandReceived += (sender, args) => DoCommand(args.Command);
         }
 
         public TextCommandListener Host { get; private set; }
@@ -30,74 +33,47 @@
 
         public void Read(byte[] buffer, int count)
         {
-            var text = Encoding.ASCII.GetString(buffer, 0, count);
+            _commandReader.Read(buffer, count);
+        }
 
-            if (string.IsNullOrWhiteSpace(text))
+        private void DoCommand(Command command)
+        {
+            try
             {
-                return;
-            }
+                command.ThrowIfDefaultValues();
 
-            var parts = text.Split(' ');
-
-            var response = "unknown";
-            if (parts.Length > 0)
-            {
-                switch (parts[0].ToLower())
+                switch (command.Category.ToLower())
                 {
                     case "input":
-                        try
+                        var path = $"/vizengine/inputs/input{command.Name}/tally";
+                        var status = command.Value.ToLower();
+                        if (status == "active" || status == "inactive")
                         {
-                            if (parts.Length > 1)
-                            {
-                                if (!int.TryParse(parts[1], out var inputNo))
-                                {
-                                    response = "bad input format";
-                                }
-                                else
-                                {
-                                    if (parts.Length > 2)
-                                    {
-                                        var path = $"/vizengine/inputs/input{inputNo}/tally";
-                                        var status = parts[2].ToLower();
-                                        if (status == "active" || status == "inactive")
-                                        {
-                                            response = EmberTree.SetParameter(
-                                                Dispatcher,
-                                                path,
-                                                status == "active")
-                                                ? "success"
-                                                : "failed";
-                                        }
-                                        else
-                                        {
-                                            response = "unknown status";
-                                        }
-                                    }
-                                    else
-                                    {
-                                        response = "missing status";
-                                    }
-                                }
-                            }
-                            else
-                            {
-                                response = "missing input";
-                            }
+                            Send(
+                                command.Id,
+                                EmberTree.SetParameter(Dispatcher, path, status == "active") ? "success" : "failed");
                         }
-                        catch
+                        else
                         {
-                            response = "bad format";
+                            Send(command.Id, "unknown status");
                         }
 
                         break;
                 }
             }
-
-            Send(response);
+            catch (Exception exception)
+            {
+                Send(command?.Id ?? -1, exception.Message);
+            }
         }
 
-        private void Send(string message)
+        private void Send(int id, string message)
         {
+            if (id < 0)
+            {
+                return;
+            }
+
             Socket socket;
             TextCommandListener host;
 
@@ -112,7 +88,7 @@
                 return;
             }
 
-            var buffer = Encoding.ASCII.GetBytes(message + "\n\r");
+            var buffer = Encoding.ASCII.GetBytes($"{id} {message}\n\r");
 
             try
             {
