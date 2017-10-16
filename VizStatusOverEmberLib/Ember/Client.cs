@@ -36,6 +36,38 @@
 
         public void Dispose()
         {
+            Dispose(true);
+        }
+
+        public void Read(byte[] buffer, int count)
+        {
+            GlowReader reader;
+
+            lock (_sync)
+            {
+                reader = _reader;
+                Console.WriteLine("Received {0} bytes from {1}", count, Socket.RemoteEndPoint);
+            }
+
+            reader?.ReadBytes(buffer, 0, count);
+        }
+
+        public void Write(GlowContainer glow)
+        {
+            var output = CreateOutput();
+
+            glow.Encode(output);
+
+            output.Finish();
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposing)
+            {
+                return;
+            }
+
             Socket socket;
             GlowReader reader;
 
@@ -62,28 +94,6 @@
             }
 
             reader?.Dispose();
-        }
-
-        public void Read(byte[] buffer, int count)
-        {
-            GlowReader reader;
-
-            lock (_sync)
-            {
-                reader = _reader;
-                Console.WriteLine("Received {0} bytes from {1}", count, Socket.RemoteEndPoint);
-            }
-
-            reader?.ReadBytes(buffer, 0, count);
-        }
-
-        public void Write(GlowContainer glow)
-        {
-            var output = CreateOutput();
-
-            glow.Encode(output);
-
-            output.Finish();
         }
 
         private void GlowReader_RootReady(object sender, AsyncDomReader.RootReadyArgs e)

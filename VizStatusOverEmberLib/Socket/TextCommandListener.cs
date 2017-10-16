@@ -38,6 +38,16 @@
 
         public void Dispose()
         {
+            Dispose(true);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposing)
+            {
+                return;
+            }
+
             lock (_sync)
             {
                 foreach (var client in _clients)
