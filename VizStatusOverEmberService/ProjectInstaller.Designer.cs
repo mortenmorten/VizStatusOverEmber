@@ -28,13 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.serviceProcessInstaller1 = new System.ServiceProcess.ServiceProcessInstaller();
+            this.serviceProcessInstaller = new System.ServiceProcess.ServiceProcessInstaller();
             this.VizStatusOverEmberServiceInstaller = new System.ServiceProcess.ServiceInstaller();
             // 
-            // serviceProcessInstaller1
+            // serviceProcessInstaller
             // 
-            this.serviceProcessInstaller1.Password = null;
-            this.serviceProcessInstaller1.Username = null;
+            this.serviceProcessInstaller.Account = System.ServiceProcess.ServiceAccount.LocalService;
+            this.serviceProcessInstaller.Password = null;
+            this.serviceProcessInstaller.Username = null;
             // 
             // VizStatusOverEmberServiceInstaller
             // 
@@ -46,14 +47,14 @@
             // ProjectInstaller
             // 
             this.Installers.AddRange(new System.Configuration.Install.Installer[] {
-            this.serviceProcessInstaller1,
+            this.serviceProcessInstaller,
             this.VizStatusOverEmberServiceInstaller});
 
         }
 
         #endregion
 
-        private System.ServiceProcess.ServiceProcessInstaller serviceProcessInstaller1;
+        private System.ServiceProcess.ServiceProcessInstaller serviceProcessInstaller;
         private System.ServiceProcess.ServiceInstaller VizStatusOverEmberServiceInstaller;
     }
 }
