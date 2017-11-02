@@ -32,6 +32,12 @@
     <RunCodeAnalysis>true</RunCodeAnalysis>
     <CodeAnalysisRuleSet>..\Common\VizStatusOverEmber.Common.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>..\VizStatusOverEmber.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="BerLib, Version=1.7.0.0, Culture=neutral, PublicKeyToken=8d38affcd2aac43e, processorArchitecture=MSIL">
       <HintPath>..\packages\EmberLibNET.EmberLib.Glow.1.7.0\lib\net46\BerLib.dll</HintPath>
@@ -89,6 +95,9 @@
     <Compile Include="TextCommandReader.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\VizStatusOverEmber.snk">
+      <Link>Properties\VizStatusOverEmber.snk</Link>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
