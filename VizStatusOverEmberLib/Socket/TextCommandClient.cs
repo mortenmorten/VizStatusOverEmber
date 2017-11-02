@@ -8,6 +8,9 @@
 
     public class TextCommandClient : IDisposable
     {
+        private static readonly log4net.ILog Log =
+            log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         private readonly object _sync = new object();
         private readonly TextCommandReader _commandReader = new TextCommandReader();
 
@@ -42,6 +45,7 @@
             {
                 command.ThrowIfDefaultValues();
 
+                Log.Debug($"Processing command: {command}");
                 switch (command.Category.ToLower())
                 {
                     case "input":
@@ -63,6 +67,7 @@
             }
             catch (Exception exception)
             {
+                Log.Warn(exception.Message);
                 Send(command?.Id ?? -1, exception.Message);
             }
         }

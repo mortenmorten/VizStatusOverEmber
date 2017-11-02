@@ -7,6 +7,9 @@
 
     public class GlowListener : IDisposable
     {
+        private static readonly log4net.ILog Log =
+            log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         private readonly List<Client> _clients = new List<Client>();
         private readonly byte[] _buffer = new byte[1024];
         private readonly object _sync = new object();
@@ -82,7 +85,7 @@
             }
             catch (SocketException ex)
             {
-                Console.WriteLine("Accept error: {0}", ex);
+                Log.ErrorFormat("Accept error: {0}", ex);
             }
             catch (ObjectDisposedException)
             {

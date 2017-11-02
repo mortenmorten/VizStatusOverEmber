@@ -8,6 +8,9 @@
 
     public class TextCommandListener : IDisposable
     {
+        private static readonly log4net.ILog Log =
+            log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         private readonly List<TextCommandClient> _clients = new List<TextCommandClient>();
         private readonly byte[] _buffer = new byte[1024];
         private readonly object _sync = new object();
@@ -28,6 +31,8 @@
 
         public void CloseClient(TextCommandClient client)
         {
+            Log.DebugFormat("Closing client {0}", client.Socket.RemoteEndPoint);
+
             lock (_sync)
             {
                 _clients.Remove(client);
@@ -68,6 +73,8 @@
                 var socket = listener.EndAcceptSocket(result);
                 var client = new TextCommandClient(this, socket, Dispatcher);
 
+                Log.DebugFormat("Accepting connection from {0}", client.Socket.RemoteEndPoint);
+
                 lock (_sync)
                 {
                     _clients.Add(client);
@@ -78,7 +85,7 @@
             }
             catch (SocketException ex)
             {
-                Console.WriteLine("Accept error: {0}", ex);
+                Log.Error("Accept error", ex);
             }
             catch (ObjectDisposedException)
             {

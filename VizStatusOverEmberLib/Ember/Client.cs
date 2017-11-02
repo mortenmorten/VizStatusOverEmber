@@ -11,6 +11,9 @@
 
     public class Client : IDisposable
     {
+        private static readonly log4net.ILog Log =
+            log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         private readonly object _sync = new object();
         private GlowReader _reader;
 
@@ -46,7 +49,7 @@
             lock (_sync)
             {
                 reader = _reader;
-                Console.WriteLine("Received {0} bytes from {1}", count, Socket.RemoteEndPoint);
+                Log.DebugFormat("Received {0} bytes from {1}", count, Socket.RemoteEndPoint);
             }
 
             reader?.ReadBytes(buffer, 0, count);
@@ -116,18 +119,18 @@
             }
             else
             {
-                Console.WriteLine("Unexpected Ember Root: {0} ({1})", e.Root, e.Root.GetType());
+                Log.WarnFormat("Unexpected Ember Root: {0} ({1})", e.Root, e.Root.GetType());
             }
         }
 
         private void GlowReader_Error(object sender, GlowReader.ErrorArgs e)
         {
-            Console.WriteLine("GlowReader error {0}: {1}", e.ErrorCode, e.Message);
+            Log.WarnFormat("GlowReader error {0}: {1}", e.ErrorCode, e.Message);
         }
 
         private void GlowReader_FramingError(object sender, FramingReader.FramingErrorArgs e)
         {
-            Console.WriteLine("GlowReader framing error: {0}", e.Message);
+            Log.WarnFormat("GlowReader framing error: {0}", e.Message);
         }
 
         private void GlowReader_KeepAliveRequestReceived(object sender, FramingReader.KeepAliveRequestReceivedArgs e)

@@ -52,6 +52,11 @@
             }
         }
 
+        public override string ToString()
+        {
+            return $"{Id} {Category} {Name} {Value}".Trim();
+        }
+
         private static string GetValue(MatchCollection matches, int match, string defaultValue)
         {
             return matches == null || matches.Count <= match || !matches[match].Success
