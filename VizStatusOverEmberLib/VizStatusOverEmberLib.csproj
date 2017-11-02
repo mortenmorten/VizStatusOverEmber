@@ -33,6 +33,18 @@
     <CodeAnalysisRuleSet>..\Common\VizStatusOverEmber.Common.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="BerLib, Version=1.7.0.0, Culture=neutral, PublicKeyToken=8d38affcd2aac43e, processorArchitecture=MSIL">
+      <HintPath>..\packages\EmberLibNET.EmberLib.Glow.1.7.0\lib\net46\BerLib.dll</HintPath>
+    </Reference>
+    <Reference Include="EmberLib, Version=1.7.0.0, Culture=neutral, PublicKeyToken=8d38affcd2aac43e, processorArchitecture=MSIL">
+      <HintPath>..\packages\EmberLibNET.EmberLib.1.7.0\lib\net46\EmberLib.dll</HintPath>
+    </Reference>
+    <Reference Include="EmberLib.Framing, Version=1.7.0.0, Culture=neutral, PublicKeyToken=8d38affcd2aac43e, processorArchitecture=MSIL">
+      <HintPath>..\packages\EmberLibNET.EmberLib.Glow.1.7.0\lib\net46\EmberLib.Framing.dll</HintPath>
+    </Reference>
+    <Reference Include="EmberLib.Glow, Version=1.7.0.0, Culture=neutral, PublicKeyToken=8d38affcd2aac43e, processorArchitecture=MSIL">
+      <HintPath>..\packages\EmberLibNET.EmberLib.Glow.1.7.0\lib\net46\EmberLib.Glow.dll</HintPath>
+    </Reference>
     <Reference Include="JetBrains.Annotations, Version=11.0.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
       <HintPath>..\packages\JetBrains.Annotations.11.0.0\lib\net20\JetBrains.Annotations.dll</HintPath>
     </Reference>
@@ -72,24 +84,6 @@
     <Compile Include="Ember\GlowListener.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TextCommandReader.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\ember-plus\EmberLib.net\BerLib\BerLib.csproj">
-      <Project>{5fc199ce-da11-4d54-b52d-b9cec1e3ff8e}</Project>
-      <Name>BerLib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\ember-plus\EmberLib.net\EmberLib.Framing\EmberLib.Framing.csproj">
-      <Project>{e4fd153d-6ff9-4ab4-927b-902e585bde33}</Project>
-      <Name>EmberLib.Framing</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\ember-plus\EmberLib.net\EmberLib.Glow\EmberLib.Glow.csproj">
-      <Project>{71ef1e5c-4ca1-4c44-a091-0ca9f7609dac}</Project>
-      <Name>EmberLib.Glow</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\ember-plus\EmberLib.net\EmberLib\EmberLib.csproj">
-      <Project>{535d5b87-6db7-41eb-a4ec-37a56c6352fb}</Project>
-      <Name>EmberLib</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

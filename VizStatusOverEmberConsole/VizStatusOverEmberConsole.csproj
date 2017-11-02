@@ -49,18 +49,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\ember-plus\EmberLib.net\EmberLib.Framing\EmberLib.Framing.csproj">
-      <Project>{e4fd153d-6ff9-4ab4-927b-902e585bde33}</Project>
-      <Name>EmberLib.Framing</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\ember-plus\EmberLib.net\EmberLib.Glow\EmberLib.Glow.csproj">
-      <Project>{71ef1e5c-4ca1-4c44-a091-0ca9f7609dac}</Project>
-      <Name>EmberLib.Glow</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\ember-plus\EmberLib.net\EmberLib\EmberLib.csproj">
-      <Project>{535d5b87-6db7-41eb-a4ec-37a56c6352fb}</Project>
-      <Name>EmberLib</Name>
-    </ProjectReference>
     <ProjectReference Include="..\VizStatusOverEmberLib\VizStatusOverEmberLib.csproj">
       <Project>{2b6cb0e8-8a8c-4a5f-8db7-c36fd94a26c0}</Project>
       <Name>VizStatusOverEmberLib</Name>
